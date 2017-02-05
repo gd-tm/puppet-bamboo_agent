@@ -10,6 +10,7 @@ define bamboo_agent::service(
 
   $service = "bamboo-agent${id}"
   $script  = "${home}/bin/bamboo-agent.sh"
+  $agent_id = $id
 
   file { "/etc/init.d/${service}":
     ensure  => file,
