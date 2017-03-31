@@ -32,9 +32,9 @@ define bamboo_agent::service(
     id         => $id,
     user       => $user
   }
-  ->
-  service { $service:
-    ensure => running,
-    enable => true,
-  }
+#  ->
+#  service { $service:
+#    ensure => running,
+#    enable => true,
+#  }
 }
