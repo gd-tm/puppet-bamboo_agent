@@ -82,6 +82,9 @@
 #   java_classname => 'my_favorite_java',
 # }
 #
+
+include stdlib
+
 class bamboo_agent(
   $server_url      = 'UNSET',
 

@@ -1,0 +1,17 @@
+[Unit]
+Description=Bamboo Agent <%= @agent_id %>
+After=network.target
+ConditinalPathExists=/usr/local/bamboo/bamboo-agent-installer.jar
+
+
+[Service]
+User=<%= @user %>
+EnvironmentFile=-/etc/default/bamboo<%= @agent_id %>-agent
+KillMode=process
+Restart=on-failure
+ExecStart=<%= @script %> start
+ExecStop= <%= @script %> stop
+
+
+[Install]
+WantedBy=multi-user.target

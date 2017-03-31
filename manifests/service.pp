@@ -2,26 +2,39 @@
 # after rendering an init script that delegates to the agent's bamboo-agent.sh
 # script.
 # *** This type should be considered private to this module ***
+
+
 define bamboo_agent::service(
   $home,
-  $id = $title,
   $user,
+  $id = $title,
 ){
 
   $service = "bamboo-agent${id}"
   $script  = "${home}/bin/bamboo-agent.sh"
   $agent_id = $id
 
-  file { "/etc/init.d/${service}":
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    content => template('bamboo_agent/init-script.erb'),
+  if $::osfamily == 'Debian' and
+    $::lsbmajdistrelease >= 8 {
+      $initsystem = 'sysvinit'
+    }
+  elsif $::facts['kernel'] == 'Linux' {
+    $initsystem = 'sysvinit'
+  }
+  else {
+    fail('Unsupported non-Linux platform')
+  }
+
+  bamboo_agent::servicefile { "bamboo-agent-${title}":
+    initsystem => $initsystem,
+    service    => $service,
+    home       => $home,
+    id         => $id,
+    user       => $user
   }
   ->
   service { $service:
-    ensure    => running,
-    enable    => true,
+    ensure => running,
+    enable => true,
   }
 }
