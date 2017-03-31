@@ -1,8 +1,5 @@
-# Declares the agent a Puppet service and ensures it is running and enabled,
-# after rendering an init script that delegates to the agent's bamboo-agent.sh
-# script.
-# *** This type should be considered private to this module ***
 
+# create something for an init system, defaults to systemd
 
 define bamboo_agent::service(
   $home,
@@ -15,11 +12,11 @@ define bamboo_agent::service(
   $agent_id = $id
 
   if $::osfamily == 'Debian' and
-    $::lsbmajdistrelease >= 8 {
+    $::lsbmajdistrelease < 8 {
       $initsystem = 'sysvinit'
     }
   elsif $::facts['kernel'] == 'Linux' {
-    $initsystem = 'sysvinit'
+    $initsystem = 'systemd'
   }
   else {
     fail('Unsupported non-Linux platform')
