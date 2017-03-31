@@ -5,12 +5,12 @@ ConditinalPathExists=/usr/local/bamboo/bamboo-agent-installer.jar
 
 
 [Service]
-User=<%= @user %>
+Type=forking
 EnvironmentFile=-/etc/default/bamboo<%= @agent_id %>-agent
 KillMode=process
 Restart=on-failure
 ExecStart=<%= @script %> start
-ExecStop= <%= @script %> stop
+ExecStop=<%= @script %> stop
 
 
 [Install]
