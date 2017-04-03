@@ -15,7 +15,7 @@ define bamboo_agent::service(
     $::lsbmajdistrelease < 8 {
       $initsystem = 'sysvinit'
     }
-  elsif $::facts['kernel'] == 'Linux' {
+  elsif $::kernel == 'Linux' {
     $initsystem = 'systemd'
   }
   else {
