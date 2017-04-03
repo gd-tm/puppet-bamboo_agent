@@ -1,5 +1,5 @@
 {
-  "author": "cintiadr",
+  "author": "gd-tm",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -14,20 +14,20 @@
       "version_requirement": ">= 0.0.3"
     }
   ],
-  "description": "Fork of kaykak/bamboo_agent. Installation and fine-grained control of Bamboo agents on a node, including agent capabilities and properties in wrapper.conf",
+  "description": "Fork of cintiadr/bamboo_agent. Installation and fine-grained control of Bamboo agents on a node, including agent capabilities and properties in wrapper.conf",
   "license": "Apache License, Version 2.0",
-  "name": "cintiadr-bamboo_agent",
+  "name": "gd_tm-bamboo_agent",
   "operatingsystem_support": [
 
   ],
-  "project_page": "https://github.com/cintiadr/puppet-bamboo_agent",
+  "project_page": "https://github.com/gd-tm/puppet-bamboo_agent",
   "requirements": [
 
   ],
-  "source": "git://github.com/cintiadr/puppet-bamboo_agent.git",
+  "source": "git://github.com/gd-tm/puppet-bamboo_agent.git",
   "summary": "Advanced management of Atlassian Bamboo agents",
   "tags": [
 
   ],
-  "version": "0.0.15"
+  "version": "0.0.16"
 }
