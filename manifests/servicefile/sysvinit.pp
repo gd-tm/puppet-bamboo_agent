@@ -1,11 +1,13 @@
 
+# How to instantiate a SysV init script:
+
 define bamboo_agent::servicefile::sysvinit(
   $service,
   $home,
   $id,
   $user
 ){
- file { "/etc/init.d/${service}":
+  file { "/etc/init.d/${service}":
     ensure  => file,
     owner   => 'root',
     group   => 'root',
